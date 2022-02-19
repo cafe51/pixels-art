@@ -13,16 +13,16 @@
     border: 1px solid black
 }
 
+.black {
+    background-color: black;
+}
+
 .blue {
     background-color: blue;
 }
 
 .green {
     background-color: green;
-}
-
-.yellow {
-    background-color: yellow;
 }
 
 .red {
