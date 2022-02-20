@@ -5,6 +5,11 @@
   margin-right: 5px;
 }
 
+#botao-cores {
+  position: relative;
+  top: -178px;
+}
+
 .color {
 display: inline-block;
 width: 100px;

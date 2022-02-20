@@ -2,6 +2,13 @@ const body = document.querySelector('body');
 const paleta = document.querySelector('#color-palette');
 const grade = document.querySelector('#pixel-board');
 
+function criaBotaoDasCores() {
+  const botaoCores = document.createElement('button');
+  botaoCores.setAttribute('id', 'botao-cores');
+  botaoCores.innerText = 'Q U E R O N O V A S C O R E S';
+  body.appendChild(botaoCores);
+}
+
 function randomColor() {
   const cores = document.querySelectorAll('.color');
   for (let i = 0; i < cores.length; i += 1) {
@@ -14,6 +21,11 @@ function randomColor() {
       cores[i].style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
     }
   }
+}
+
+function ativaBotao() {
+  const botaoCores = document.querySelector('#botao-cores');
+  botaoCores.addEventListener('click', randomColor);
 }
 
 function criaImputGrade() {
@@ -145,3 +157,7 @@ botaoEventoClear();
 criaImputGrade();
 
 botaoInput();
+
+criaBotaoDasCores();
+
+ativaBotao();
