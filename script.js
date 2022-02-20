@@ -2,14 +2,6 @@ const body = document.querySelector('body');
 const paleta = document.querySelector('#color-palette');
 const grade = document.querySelector('#pixel-board');
 
-// function randomColor () {
-//   const cor = document.querySelectorAll('.color');
-//   for (let i = 0; i < cor.length; i += 1) {
-//     // let n = Math.floor(Math.random() * 256);
-//     cor[i].style.backgroundColor = 'rgb(' + Math.floor(Math.random() * 256) + ', ' + Math.floor(Math.random() * 256) + ', ' + Math.floor(Math.random() * 256) + ')';
-//   }
-// }
-
 function randomColor() {
   const cores = document.querySelectorAll('.color');
   for (let i = 0; i < cores.length; i += 1) {
@@ -23,8 +15,6 @@ function randomColor() {
     }
   }
 }
-
-randomColor();
 
 function criaImputGrade() {
   const sectionInput = document.createElement('section');
@@ -85,6 +75,16 @@ function apagaEcria(quantidade) {
   gradeSizer(quantidade);
 }
 
+function input2() {
+  const inputText = document.querySelector('#board-size');
+  const size = inputText.value;
+  if (size > 50) {
+    apagaEcria(50);
+  } else {
+    alert('Board inválido!');
+  }
+}
+
 function input() {
   const inputText = document.querySelector('#board-size');
   const size = inputText.value;
@@ -92,11 +92,7 @@ function input() {
     apagaEcria(size);
   } else if (size < 5 && size != 0) {
     apagaEcria(5);
-  } else if (size > 50) {
-    apagaEcria(50);
-  } else {
-    alert('Board inválido!');
-  }
+  } else input2();
 }
 
 function botaoInput() {
@@ -137,6 +133,8 @@ gradeSizer(5);
 criaSecaoClear();
 
 criaBotaoClear();
+
+randomColor();
 
 paleta.addEventListener('click', trocaSeletor);
 
