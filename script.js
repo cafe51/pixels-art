@@ -59,14 +59,41 @@ function gradeRemover() {
   }
 }
 
+function apagaEcria(quantidade) {
+  gradeRemover();
+  gradeSizer(quantidade);
+}
+
 function input() {
   const inputText = document.querySelector('#board-size');
   const size = inputText.value;
   if (size >= 5 && size <= 50) {
-    gradeRemover();
-    gradeSizer(size);
-  } else alert('Board inválido!');
+    apagaEcria(size);
+  } else if (size < 5 && size != 0) {
+    apagaEcria(5);
+  } else if (size > 50) {
+    apagaEcria(50);
+  } else {
+    alert('Board inválido!');
+  }
 }
+
+// function input() {
+//   const inputText = document.querySelector('#board-size');
+//   const size = inputText.value;
+//   if (size >= 5 && size <= 50) {
+//     gradeRemover();
+//     gradeSizer(size);
+//   } else if (size < 5 && size != 0) {
+//     gradeRemover();
+//     gradeSizer(5);
+//   } else if (size > 50) {
+//     gradeRemover();
+//     gradeSizer(50);
+//   } else {
+//     alert('Board inválido!');
+//   }
+// }
 
 function botaoInput() {
   const botao = document.querySelector('#generate-board');
