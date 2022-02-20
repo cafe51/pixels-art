@@ -2,6 +2,30 @@ const body = document.querySelector('body');
 const paleta = document.querySelector('#color-palette');
 const grade = document.querySelector('#pixel-board');
 
+// function randomColor () {
+//   const cor = document.querySelectorAll('.color');
+//   for (let i = 0; i < cor.length; i += 1) {
+//     // let n = Math.floor(Math.random() * 256);
+//     cor[i].style.backgroundColor = 'rgb(' + Math.floor(Math.random() * 256) + ', ' + Math.floor(Math.random() * 256) + ', ' + Math.floor(Math.random() * 256) + ')';
+//   }
+// }
+
+function randomColor() {
+  const cores = document.querySelectorAll('.color');
+  for (let i = 0; i < cores.length; i += 1) {
+    if (i === 0) {
+      cores[i].style.backgroundColor = 'black';
+    } else {
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+      cores[i].style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
+  }
+}
+
+randomColor();
+
 function criaImputGrade() {
   const sectionInput = document.createElement('section');
   const entrada = document.createElement('input');
@@ -20,9 +44,6 @@ function criaImputGrade() {
   sectionInput.appendChild(entrada);
   sectionInput.appendChild(botao);
 }
-
-// #board-size[type='number'][min='1']
-
 function criaSecaoClear() {
   const secao = document.createElement('section');
   secao.setAttribute('id', 'section-clear');
@@ -78,23 +99,6 @@ function input() {
   }
 }
 
-// function input() {
-//   const inputText = document.querySelector('#board-size');
-//   const size = inputText.value;
-//   if (size >= 5 && size <= 50) {
-//     gradeRemover();
-//     gradeSizer(size);
-//   } else if (size < 5 && size != 0) {
-//     gradeRemover();
-//     gradeSizer(5);
-//   } else if (size > 50) {
-//     gradeRemover();
-//     gradeSizer(50);
-//   } else {
-//     alert('Board inválido!');
-//   }
-// }
-
 function botaoInput() {
   const botao = document.querySelector('#generate-board');
   botao.addEventListener('click', input);
@@ -108,10 +112,11 @@ function trocaSeletor(evt) {
 
 function pinta(evt) {
   const selecionado = document.querySelector('.selected');
-  const corNova = selecionado.classList[1];
+  const corClasse = selecionado.classList[1];
+  const divSelecionada = document.querySelector(`.${corClasse}`);
   const alvo = evt.target;
   if (alvo.classList[0] === 'pixel') {
-    alvo.style.backgroundColor = corNova;
+    alvo.style.backgroundColor = divSelecionada.style.backgroundColor;
   }
 }
 
